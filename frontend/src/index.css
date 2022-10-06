@@ -1,0 +1,49 @@
+:root {
+    --master-border-color: #4b5563;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.4rem;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+}
+
+input[type="text"].search-input {
+    padding: 0.5rem;
+    outline: none;
+    font-size: 1.4rem;
+    border-width: 2px 0 2px 2px;
+    border-color: var(--master-border-color);
+    border-radius: 0.5rem 0 0 0.5rem;
+
+    box-shadow: 2px 2px 8px var(--master-border-color);
+}
+
+button.search-btn {
+    padding: 0.5rem;
+    font-size: 1.4rem;
+    border-width: 2px 2px 2px 0;
+    border-color: var(--master-border-color);
+    border-radius: 0 0.5rem 0.5rem 0;
+
+    margin-left: -6px;
+
+    box-shadow: 2px 2px 8px var(--master-border-color);
+
+    cursor: pointer;
+
+    transition: all 250ms;
+}
+
+button.search-btn:hover {
+    background-color: #9ca3af;
+}
