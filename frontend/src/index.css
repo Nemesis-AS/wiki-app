@@ -3,47 +3,99 @@
 }
 
 body {
+    font-size: 1.4rem;
+
+    display: grid;
+    grid-auto-rows: 40% 60%;
+}
+
+header {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    font-size: 1.4rem;
 }
 
 main {
     display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+}
+
+.logo {
+    font-size: 4rem;
+    font-weight: 400;
+    color: #1d4ed8;
+    text-align: center;
+}
+
+.input-row, .search-results {
+    display: flex;
+
+    width: 60vw;
+    margin: .5rem 0;
+}
+
+.input-row {
     justify-content: center;
     align-items: center;
-    gap: 0;
 }
 
 input[type="text"].search-input {
     padding: 0.5rem;
     outline: none;
     font-size: 1.4rem;
+    border-style: solid;
     border-width: 2px 0 2px 2px;
     border-color: var(--master-border-color);
     border-radius: 0.5rem 0 0 0.5rem;
-
     box-shadow: 2px 2px 8px var(--master-border-color);
+    flex-grow: 5;
 }
 
 button.search-btn {
     padding: 0.5rem;
     font-size: 1.4rem;
+    border-style: solid;
     border-width: 2px 2px 2px 0;
     border-color: var(--master-border-color);
     border-radius: 0 0.5rem 0.5rem 0;
-
-    margin-left: -6px;
-
     box-shadow: 2px 2px 8px var(--master-border-color);
-
     cursor: pointer;
-
     transition: all 250ms;
+    flex-grow: 1;
+    background-color: #9ca3af;
+    font-weight: 700;
 }
 
 button.search-btn:hover {
-    background-color: #9ca3af;
+    background-color: #10b981;
+}
+
+.search-results {
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 0 .5rem;
+    border-radius: 0 0 .5rem .5rem;
+
+    box-shadow: 2px 2px 8px var(--master-border-color);
+}
+
+.search-results > .result {
+    border-style: solid;
+    border-width: 0 0 2px 0;
+    border-color: var(--master-border-color);
+    width: 100%;
+    margin: .2rem 0;
+}
+
+.search-results > .result:last-child {
+   border: none;
+}
+
+.search-results > .result > .title {
+    font-weight: 700;
+    color: dodgerblue;
+    text-decoration: none;
 }
