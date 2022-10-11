@@ -32,9 +32,11 @@ class Client {
 
     async searchQuery(query, limit = 5) {
         let args = {
-            search: query,
-            action: "opensearch",
-            limit
+            action: "query",
+            prop: "info",
+            list: "search",
+            srsearch: query,
+            srlimit: limit
         };
         let url = this.buildUrl(args);
 
@@ -67,10 +69,11 @@ function main() {
 // ========================================================================
 
 function addEventListeners(client) {
-    const searchBtn = document.getElementById("searchBtn");
     const searchInput = document.getElementById("searchInput");
+    const searchForm = document.getElementById("searchForm");
 
-    searchBtn.addEventListener("click", async e => {
+    searchForm.addEventListener("submit", async e => {
+        e.preventDefault();
         let query = searchInput.value;
         let res = await client.searchQuery(query);
         buildResultMarkup(res);
@@ -90,16 +93,23 @@ function buildResultMarkup(resObj) {
         return;
     }
 
-    let results = resObj[1];
+    let results = resObj.query.search;
 
     results.forEach(res => {
+        console.log(res);
+        // return;
+
         let resultEl = document.createElement("div");
         resultEl.classList.add("result");
         let titleEl = document.createElement("a");
         titleEl.classList.add("title");
-        titleEl.href = `/article.html?page=${res}`
-        titleEl.textContent = res;
+        titleEl.href = `/article.html?page=${res.pageid}`
+        titleEl.textContent = res.title;
         resultEl.appendChild(titleEl);
+        let subEl = document.createElement("p");
+        subEl.classList.add("subtext");
+        subEl.innerHTML = res.snippet;
+        resultEl.appendChild(subEl);
         rootEl.appendChild(resultEl);
     });
 }

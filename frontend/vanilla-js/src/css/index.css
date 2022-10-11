@@ -8,7 +8,8 @@ body {
     font-size: 1.4rem;
 
     display: grid;
-    grid-auto-rows: 40% 60%;
+    grid-template-rows: 40vh minmax(60vh, auto);
+    padding-bottom: 2rem;
 }
 
 header {
@@ -19,7 +20,6 @@ header {
 
 main {
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     flex-direction: column;
 }
@@ -99,5 +99,17 @@ button.search-btn:hover {
 .search-results > .result > .title {
     font-weight: 700;
     color: var(--branding-main-color);
-    text-decoration: none;
+    text-decoration: underline 0.2rem rgba(0, 0, 0, 0);
+    text-underline-offset: .15rem;
+    transition: all 350ms;
+}
+
+.search-results > .result > .title:hover {
+    text-decoration-color: var(--branding-main-color);
+    text-underline-offset: .25rem;
+}
+
+.search-results > .result > .subtext {
+    font-size: 1rem;
+    margin: 0.4rem 0;
 }
