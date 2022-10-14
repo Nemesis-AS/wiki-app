@@ -1,5 +1,10 @@
 class Client {
-    constructor(baseUrl, options) {
+    static defaultOptions = {
+        origin: "*",
+        format: "json"
+    }
+
+    constructor(baseUrl, options = Client.defaultOptions) {
         this.baseUrl = baseUrl;
         this.options = options;
     }
@@ -43,12 +48,23 @@ class Client {
         return await this.fetchJson(url);
     }
 
-    async getPage(pageID) {
+    async getPageByTitle(pageID) {
         let args = {
             prop: "text",
             action: "parse",
             formatversion: "2",
             page: pageID
+        }
+        let url = this.buildUrl(args);
+
+        return await this.fetchJson(url);
+    }
+
+    async getPageByID(pageID) {
+        let args = {
+            action: "parse",
+            pageid: pageID,
+            prop: "text"
         }
         let url = this.buildUrl(args);
 

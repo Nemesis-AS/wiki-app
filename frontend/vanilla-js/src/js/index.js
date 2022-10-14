@@ -2,10 +2,7 @@ import Client from "./client.js";
 
 // ========================= ENTRY POINT =================================
 function main() {
-    let client = new Client("https://en.wikipedia.org/w/api.php", {
-        format: "json",
-        origin: "*"
-    });
+    let client = new Client("https://en.wikipedia.org/w/api.php");
 
     addEventListeners(client);
 }
