@@ -11,39 +11,39 @@ article div[role="note"] {
     margin: .2rem 0;
 }
 
-article table.infobox.biography.vcard th.infobox-above > div {
+article table.infobox th.infobox-above > div {
     text-align: center;
     font-size: 1.7rem;
     font-weight: 500;
 }
 
-/* article table.infobox.biography.vcard tr:has(td.infobox-image) {
+/* article table.infobox tr:has(td.infobox-image) {
     display: flex;
 } */
 
-article table.infobox.biography.vcard td.infobox-image {
+article table.infobox td.infobox-image {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-article table.infobox.biography.vcard td.infobox-image > a.image > img {
+article table.infobox td.infobox-image > a.image > img {
     border-radius: .4rem;
 }
 
-article table.infobox.biography.vcard th[scope="row"].infobox-label {
+article table.infobox th[scope="row"].infobox-label {
     font-size: 1.2rem;
     font-weight: 700;
     text-align: center;
 }
 
-article table.infobox.biography.vcard td.infobox-data {
+article table.infobox td.infobox-data {
     background-color: #a7f3d0;
     padding: .2rem .5rem;
     border-radius: .25rem;
 }
 
-article a {
+article a:not(.image) {
     color: var(--branding-main-color);
     text-decoration: none;
     border: 2px dashed rgba(0, 0, 0, 0);
@@ -52,7 +52,7 @@ article a {
     padding: 0 .2rem;
 }
 
-article a:hover {
+article a:not(.image):hover {
     border-color: var(--branding-main-color);
     background-color: #e2e8f0;
 }
@@ -64,4 +64,15 @@ article p {
 
 article .mw-editsection, article .mw-empty-elt {
     display: none;
+}
+
+article h2 {
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: underline 2px;
+    text-decoration-thickness: 4px;
+    text-underline-offset: 4px;
+
+    margin: .5rem 0;
 }

@@ -6,7 +6,6 @@ async function main() {
 
     let client = new Client("https://en.wikipedia.org/w/api.php");
     let res = await client.getPageByID(articleID);
-    console.log(res);
 
     if (res.error) {
         console.error(`An Error Occured while fetching the article!\n${res.error.code}: ${res.error.info}`);
@@ -24,6 +23,13 @@ function parseArticle(data) {
     const parsedEl = tempEl.querySelector("div.mw-parser-output");
     parsedEl.querySelectorAll("style").forEach(style => style.remove());
     parsedEl.querySelectorAll("link[rel='mw-deduplicated-inline-style']").forEach(style => style.remove());
+    parsedEl.querySelectorAll("a.image").forEach(link => link.href = "");
+
+    const { origin } = window.location;
+    const matchStr = `${origin}/wiki/`;
+    parsedEl.querySelectorAll("a").forEach(link => {
+        if (link.href.startsWith(matchStr)) link.href = link.href.replace("/wiki/", "/article.html?article=")
+    });
 
     const articleEl = document.querySelector("article");
     articleEl.appendChild(parsedEl);
